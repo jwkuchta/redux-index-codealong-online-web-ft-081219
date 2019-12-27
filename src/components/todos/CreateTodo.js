@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+// import TodosContainer from './TodosContainer';
 
 class CreateTodo extends Component {
 
@@ -38,4 +39,8 @@ const mapDispatchToProps = dispatch => ({
   addTodo: formData => dispatch({ type: 'ADD_TODO', payload: formData })
 })
 
-export default connect(null, mapDispatchToProps)(CreateTodo);
+const mapStateToProps = (state) => {
+  return {todos: state.todos}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTodo);
